@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0d61a57d-7d84-47c3-b23a-7056594547b6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/1/512663bea1383010f0dabcfc72013b79aedab9de" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/9/593902698999650bcddc3b40e8d939be07e1bd61" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/c/6cf89f26594c8e483084fd4ae710b8027e48e7a4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/e/7e80c3203ed625a1d2c6e4bde1aa01f51883d4bc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/4/94cdde6aa9550801cb79263e5a136393f1774be3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/0/a08627a599a8bed3f83c8211964c485e0b6a560e" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/5/a5cc2925ca8258af241be7e5b0381edf30266302" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/9/d94434a9afc2186965f3412914c89a562a39ce7b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/e/de492806c4221791df406ead34fe0346fe956ac9" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/1/512663bea1383010f0dabcfc72013b79aedab9de" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/9/593902698999650bcddc3b40e8d939be07e1bd61" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/6/c/6cf89f26594c8e483084fd4ae710b8027e48e7a4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/e/7e80c3203ed625a1d2c6e4bde1aa01f51883d4bc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/4/94cdde6aa9550801cb79263e5a136393f1774be3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/0/a08627a599a8bed3f83c8211964c485e0b6a560e" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/5/a5cc2925ca8258af241be7e5b0381edf30266302" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/9/d94434a9afc2186965f3412914c89a562a39ce7b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/e/de492806c4221791df406ead34fe0346fe956ac9" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/DungenrousApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/ArcaneCrusader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/BossFight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Character.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Dungeon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Elf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Fraction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Human.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Loot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/LootId.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Mage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Mob.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Paladin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/PassThrough.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Player.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/enums/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/enums/RequiredClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/interfaces/IMage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/interfaces/IPaladin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2y2lZDuJYrli8DRwuB09Uy8jejI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/grzes/Desktop/PJATK/Semestr 6/MAS/Implementacja/FinalnyProjekt&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0d61a57d-7d84-47c3-b23a-7056594547b6" name="Changes" comment="" />
+      <created>1749040604038</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1749040604038</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
