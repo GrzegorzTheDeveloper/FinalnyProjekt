@@ -5,17 +5,21 @@
     <preferences />
   </component>
   <component name="DBNavigator.Project.DatabaseAssistantManager">
-    <assistants />
+    <assistants>
+      <assistant-state connection-id="cdd32698-ab71-44f2-9f66-8b23249493a5" default-profile-name="" selected-profile-name="" selected-model-name="" assistant-type="GENERIC" selected-action="SHOW_SQL" availability="UNCERTAIN" acknowledgement="NONE">
+        <messages />
+      </assistant-state>
+    </assistants>
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
-    <show-object-properties value="true" />
+    <show-object-properties value="false" />
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="cdd32698-ab71-44f2-9f66-8b23249493a5">
-      <console name="Connection" type="STANDARD" schema="dungenrous_db" session="Main" />
+      <console name="Connection" type="STANDARD" schema="dungenrous_db" session="Main"><![CDATA[select * from public.mob;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -25,8 +29,14 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="cdd32698-ab71-44f2-9f66-8b23249493a5" dataset="public.item" active-filter-id="aa6e5473-438e-49e5-b781-467a0615962d">
+      <filter id="aa6e5473-438e-49e5-b781-467a0615962d" name="Filter" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
     <filter-actions connection-id="cdd32698-ab71-44f2-9f66-8b23249493a5" dataset="public.character" active-filter-id="" />
     <filter-actions connection-id="cdd32698-ab71-44f2-9f66-8b23249493a5" dataset="public.character_current_equipment" active-filter-id="" />
+  </component>
+  <component name="DBNavigator.Project.ExecutionManager">
+    <retain-sticky-names value="false" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
@@ -40,7 +50,7 @@
           <description value="" />
           <database-type value="POSTGRES" />
           <config-type value="BASIC" />
-          <database-version value="9999.0" />
+          <database-version value="17.5" />
           <driver-source value="BUNDLED" />
           <driver-library value="" />
           <driver value="" />
@@ -55,7 +65,7 @@
           <token-type value="" />
           <token-config-file value="" />
           <token-profile value="" />
-          <session-user value="" />
+          <session-user value="postgres" />
         </database>
         <properties>
           <auto-commit value="false" />
@@ -549,5 +559,9 @@
         </visibility-settings>
       </environment>
     </general-settings>
+  </component>
+  <component name="DBNavigator.Project.StatementExecutionManager">
+    <execution-variables />
+    <execution-variable-types />
   </component>
 </project>

@@ -1,0 +1,11 @@
+package com.s27691.dungenrous.repository;
+
+import com.s27691.dungenrous.entity.Loot;
+import com.s27691.dungenrous.entity.LootId;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface LootRepository extends JpaRepository<Loot, LootId> {
+
+}

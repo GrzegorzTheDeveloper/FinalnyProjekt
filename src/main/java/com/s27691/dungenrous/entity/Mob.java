@@ -19,4 +19,5 @@ public class Mob {
   private int power;
   private int energy;
   private int healthPoints;
+  private boolean boss;
 }

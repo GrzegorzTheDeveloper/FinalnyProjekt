@@ -1,5 +1,6 @@
 package com.s27691.dungenrous.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -47,7 +48,7 @@ public abstract class Character {
   @ManyToMany
   private List<Item> currentEquipment = new ArrayList<>();
 
-  @Embedded
+  @ManyToOne
   Fraction fraction;
 
   //items
