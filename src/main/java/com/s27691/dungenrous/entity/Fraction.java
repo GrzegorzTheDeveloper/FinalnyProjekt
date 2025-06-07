@@ -19,4 +19,7 @@ public abstract class Fraction {
   @GeneratedValue
   private long id;
 
+  public boolean sustainFatalDamage(){
+    return false;
+  }
 }

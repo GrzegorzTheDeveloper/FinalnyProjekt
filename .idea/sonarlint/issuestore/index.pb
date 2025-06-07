@@ -68,3 +68,11 @@ u
 Esrc/main/java/com/s27691/dungenrous/repository/DungeonRepository.java,f\f\ff364bbd93927401f10bd6a2987563c650e5bf4c
 r
 Bsrc/main/java/com/s27691/dungenrous/repository/LootRepository.java,e\6\e6db3e08edd3c06e34792c02fe6c01d74771853f
+n
+>src/main/java/com/s27691/dungenrous/service/PlayerService.java,e\4\e446a2c633d2de98f0d668cb746cc94b6b0b43a3
+q
+Asrc/main/java/com/s27691/dungenrous/service/CharacterService.java,d\9\d9d7ce053f7dee39094b3b5ac4a115d5b425aca1
+s
+Csrc/main/java/com/s27691/dungenrous/service/FractionRepository.java,1\8\18255fd0926d5e63a56960c569191ef1ae59a367
+p
+@src/main/java/com/s27691/dungenrous/service/FractionService.java,7\3\7359dbb6ec110d8045c7d40b64a168cd29c93a88

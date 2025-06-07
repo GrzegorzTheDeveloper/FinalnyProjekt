@@ -56,6 +56,7 @@ public abstract class Character {
   public boolean collectItem(Item item){
     if(itemsOwned.size()<30){
       itemsOwned.add(item);
+      itemsOwned.sort(Comparator.comparing(Item::getPower));
       return true;
     }
     return false;
@@ -67,10 +68,11 @@ public abstract class Character {
   }
 
   public boolean equipItem(Item item){
-    if(!itemsOwned.contains(item) || checkIfCategoryOccupied(item) || item.getRequiredLevel()>level)
+    if(!itemsOwned.contains(item) || item.getRequiredLevel()>level)
       return false;
+    currentEquipment.removeIf(equipped -> equipped.getCategory() == item.getCategory());
+
     currentEquipment.add(item);
-    currentEquipment.sort(Comparator.comparing(Item::getPower));
     return true;
   }
 
@@ -78,21 +80,20 @@ public abstract class Character {
     currentEquipment.remove(item);
   }
 
-  private boolean checkIfCategoryOccupied(Item item){
-    return currentEquipment.stream()
-        .anyMatch(it -> it.getCategory() == item.getCategory());
-  }
 
   //level up / attributes
 
-  private boolean levelUp(){
-    if(experience>100+50*level){
-      level+=1;
-      experience -= 100 + 50*level;
-      freeDevelopmentPoints++;
-      return true;
-    }
-    return false;
+  public void initializeStartingStats() {
+    this.level = 1;
+    this.experience = 0;
+    this.strength = 10;
+    this.intellect = 10;
+    this.defense = 10;
+    this.currentHealthPoints = 100;
+    this.maxHealthPoints = 100;
+    this.freeDevelopmentPoints = 5;
+    this.numberOfDungeonsPassed = 0;
+    this.potionQuantity = 3;
   }
 
 //  private boolean assignDevelopmentPoint(){

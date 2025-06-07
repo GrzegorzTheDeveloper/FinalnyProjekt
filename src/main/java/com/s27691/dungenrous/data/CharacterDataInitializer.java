@@ -16,6 +16,7 @@ import com.s27691.dungenrous.repository.ItemRepository;
 import com.s27691.dungenrous.repository.PlayerRepository;
 import jakarta.annotation.PostConstruct;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,13 +39,13 @@ public class CharacterDataInitializer {
 
   @PostConstruct
   public void initializeCharacters() {
-
     characterRepository.deleteAll();
     createFractions();
     createSamplePlayers();
     createPaladinHeroes();
     createMageHeroes();
     createArcaneCrusaderHeroes();
+    equipStartingGear();
   }
 
   private void createFractions() {
@@ -82,7 +83,6 @@ public class CharacterDataInitializer {
   private void createPaladinHeroes() {
     Player player1 = playerRepository.findByNickname("DragonSlayer");
 
-    // High-level Human Paladin
     Paladin paladin1 = new Paladin();
     setupCharacter(paladin1, 15, 850, humanFraction, player1);
     paladin1.setStamina(120);
@@ -91,7 +91,6 @@ public class CharacterDataInitializer {
 
   private void createMageHeroes() {
     Player player2 = playerRepository.findByNickname("MagicMaster");
-
 
     Mage mage1 = new Mage();
     setupCharacter(mage1, 12, 600, humanFraction, player2);
@@ -128,6 +127,60 @@ public class CharacterDataInitializer {
     character.setPotionQuantity(3);
     character.setFraction(fraction);
     character.setPlayer(player);
+  }
+
+  private void equipStartingGear() {
+    List<Character> characters = characterRepository.findAll();
+    List<Item> items = itemRepository.findAll();
+
+    for (Character character : characters) {
+      equipCharacterWithAppropriateGear(character, items);
+    }
+  }
+
+  private void equipCharacterWithAppropriateGear(Character character, List<Item> items) {
+    RequiredClass characterClass = getCharacterClass(character);
+
+    List<Item> suitableItems = items.stream()
+        .filter(item -> canCharacterUseItem(item, characterClass, character.getLevel()))
+        .sorted((item1, item2) -> Integer.compare(item2.getPower(), item1.getPower()))
+        .toList();
+
+    suitableItems.stream()
+        .limit(8)
+        .forEach(character::collectItem);
+
+    equipBestItemsPerCategory(character, suitableItems);
+
+    characterRepository.save(character);
+  }
+
+  private RequiredClass getCharacterClass(Character character) {
+    if (character instanceof Paladin) return RequiredClass.PALADIN;
+    if (character instanceof Mage) return RequiredClass.MAGE;
+    if (character instanceof ArcaneCrusader) return RequiredClass.ARCANE_CRUSADER;
+    return RequiredClass.ANY;
+  }
+
+  private boolean canCharacterUseItem(Item item, RequiredClass characterClass, int characterLevel) {
+    if (item.getRequiredLevel() > characterLevel) return false;
+
+    return item.getRequiredClass() == RequiredClass.ANY ||
+        item.getRequiredClass() == characterClass;
+  }
+
+  private void equipBestItemsPerCategory(Character character, List<Item> suitableItems) {
+    suitableItems.stream()
+        .collect(Collectors.groupingBy(Item::getCategory))
+        .forEach((category, categoryItems) -> {
+          Item bestItem = categoryItems.stream()
+              .max(java.util.Comparator.comparing(Item::getPower))
+              .orElse(null);
+
+          if (bestItem != null && character.getItemsOwned().contains(bestItem)) {
+            character.equipItem(bestItem);
+          }
+        });
   }
 
   private Player createPlayer(String nickname) {

@@ -47,32 +47,27 @@ public class LootDataInitializer {
 
   private void createLootForDungeon(Dungeon dungeon, List<Mob> mobs, List<Item> items) {
     if (dungeon instanceof BossFight) {
-      // Boss dungeons: 1 boss mob only
       createBossLoot(dungeon, mobs, items);
     } else {
-      // Regular dungeons: 5-10 mobs
       createRegularDungeonLoot(dungeon, mobs, items);
     }
   }
 
   private void createBossLoot(Dungeon dungeon, List<Mob> mobs, List<Item> items) {
-    // Find a boss mob appropriate for this dungeon level
     Mob bossMob = getBossMobForLevel(mobs, dungeon.getRequiredLevel());
 
-    // Create single loot entry for the boss
     Loot loot = new Loot();
 
     LootId lootId = new LootId();
     lootId.setDungeonId(dungeon.getId());
     lootId.setMobId(bossMob.getId());
-    lootId.setInstance(1); // Only one boss
+    lootId.setInstance(1);
     loot.setLootId(lootId);
 
     loot.setDungeon(dungeon);
     loot.setMob(bossMob);
-    loot.setExperience(bossMob.getPower() * 2); // Bosses give more XP
+    loot.setExperience(bossMob.getPower() * 2);
 
-    // Bosses always drop good loot
     Item bossItem = getBossItemForLevel(items, dungeon.getRequiredLevel());
     loot.setItem(bossItem);
 
@@ -80,11 +75,9 @@ public class LootDataInitializer {
   }
 
   private void createRegularDungeonLoot(Dungeon dungeon, List<Mob> mobs, List<Item> items) {
-    // Regular dungeons: 5-10 mobs
     int mobCount = 5 + random.nextInt(6); // 5-10 mobs
 
     for (int instance = 1; instance <= mobCount; instance++) {
-      // Pick mob appropriate for dungeon level (weaker mobs for lower levels)
       Mob mob = getRegularMobForLevel(mobs, dungeon.getRequiredLevel());
 
       Loot loot = new Loot();
@@ -92,14 +85,13 @@ public class LootDataInitializer {
       LootId lootId = new LootId();
       lootId.setDungeonId(dungeon.getId());
       lootId.setMobId(mob.getId());
-      lootId.setInstance(instance); // Multiple instances of same mob type
+      lootId.setInstance(instance);
       loot.setLootId(lootId);
 
       loot.setDungeon(dungeon);
       loot.setMob(mob);
       loot.setExperience(mob.getPower() + random.nextInt(10));
 
-      // 60% chance to drop an item, BUT only NON-BOSS items
       if (random.nextFloat() < 0.6f) {
         Item item = getRegularItemForLevel(items, dungeon.getRequiredLevel());
         loot.setItem(item);
@@ -110,12 +102,10 @@ public class LootDataInitializer {
   }
 
   private Mob getBossMobForLevel(List<Mob> mobs, int dungeonLevel) {
-    // Get any boss mob - bosses are meant to be challenging regardless of level!
     List<Mob> bossMobs = mobs.stream()
         .filter(Mob::isBoss)
         .toList();
 
-    // Safety check - if no boss mobs exist at all, use any mob
     if (bossMobs.isEmpty()) {
       if (mobs.isEmpty()) {
         throw new IllegalStateException("No mobs available for loot generation");
@@ -127,9 +117,8 @@ public class LootDataInitializer {
   }
 
   private Mob getRegularMobForLevel(List<Mob> mobs, int dungeonLevel) {
-    // Get only regular (non-boss) mobs appropriate for this level
     List<Mob> regularMobs = mobs.stream()
-        .filter(mob -> !mob.isBoss()) // ONLY regular mobs
+        .filter(mob -> !mob.isBoss())
         .filter(mob -> {
           if (dungeonLevel <= 5) return mob.getPower() <= 25;
           else if (dungeonLevel <= 10) return mob.getPower() > 15 && mob.getPower() <= 45;
@@ -138,7 +127,6 @@ public class LootDataInitializer {
         })
         .toList();
 
-    // Safety check - if no suitable regular mobs, get any non-boss mob
     if (regularMobs.isEmpty()) {
       List<Mob> allRegularMobs = mobs.stream()
           .filter(mob -> !mob.isBoss())
@@ -148,7 +136,7 @@ public class LootDataInitializer {
         if (mobs.isEmpty()) {
           throw new IllegalStateException("No mobs available for loot generation");
         }
-        return mobs.get(0); // Last resort fallback
+        return mobs.get(0);
       }
       return allRegularMobs.get(0);
     }
@@ -161,7 +149,6 @@ public class LootDataInitializer {
         .filter(item -> item.getRequiredLevel() <= dungeonLevel + 3)
         .toList();
 
-    // Prefer boss loot but allow regular items too
     List<Item> preferredItems = bossItems.stream()
         .filter(Item::isBossLoot)
         .toList();
@@ -176,7 +163,7 @@ public class LootDataInitializer {
 
   private Item getRegularItemForLevel(List<Item> items, int dungeonLevel) {
     List<Item> regularItems = items.stream()
-        .filter(item -> !item.isBossLoot()) // ONLY non-boss items
+        .filter(item -> !item.isBossLoot())
         .filter(item -> item.getRequiredLevel() <= dungeonLevel + 2 &&
             item.getRequiredLevel() >= Math.max(1, dungeonLevel - 3))
         .toList();

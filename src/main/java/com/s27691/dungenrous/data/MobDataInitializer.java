@@ -17,15 +17,14 @@ public class MobDataInitializer {
   @PostConstruct
   public void initializeMobs() {
       mobRepository.deleteAll();
-      createEarlyMobs();    // Levels 1-10
-      createMidTierMobs();  // Levels 11-20
-      createHighTierMobs(); // Levels 21-30
-      createBossMobs();     // Special boss creatures
+      createEarlyMobs();
+      createMidTierMobs();
+      createHighTierMobs();
+      createBossMobs();
 
   }
 
   private void createEarlyMobs() {
-    // Levels 1-10 - Regular enemies
     createMob("Skeleton Warrior", 15, 40, 50, false);
     createMob("Goblin Scout", 12, 35, 45, false);
     createMob("Cave Rat", 8, 25, 30, false);
@@ -36,7 +35,6 @@ public class MobDataInitializer {
   }
 
   private void createMidTierMobs() {
-    // Levels 11-20 - Regular enemies
     createMob("Armored Skeleton", 35, 80, 120, false);
     createMob("Hobgoblin Warrior", 40, 90, 130, false);
     createMob("Dire Wolf", 38, 100, 110, false);
@@ -47,7 +45,6 @@ public class MobDataInitializer {
   }
 
   private void createHighTierMobs() {
-    // Levels 21-30 - Regular enemies
     createMob("Death Knight", 80, 150, 300, false);
     createMob("Ancient Dragon", 120, 200, 500, false);
     createMob("Demon Lord", 100, 180, 400, false);
@@ -57,7 +54,6 @@ public class MobDataInitializer {
   }
 
   private void createBossMobs() {
-    // Epic boss creatures for BossFight dungeons
     createMob("The Bone Emperor", 200, 300, 1000, true);
     createMob("Shadowflame Dragon", 250, 400, 1500, true);
     createMob("Archdemon Malphas", 220, 350, 1200, true);

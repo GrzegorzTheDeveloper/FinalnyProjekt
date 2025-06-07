@@ -19,37 +19,31 @@ public class DungeonDataInitializer {
   public void initializeDungeons(){
     if(dungeonRepository.count()>0)
       return;
-    createEarlyDungeons();    // Levels 1-10
-    createMidTierDungeons();  // Levels 11-20
-    createHighTierDungeons(); // Levels 21-30
+    createEarlyDungeons();
+    createMidTierDungeons();
+    createHighTierDungeons();
   }
 
   private void createEarlyDungeons() {
-    // Early PassThrough dungeons
     createPassThrough(1, "Goblin Cave", 1, 50, 0.3f);
     createPassThrough(2, "Dark Forest Path", 2, 75, 0.4f);
     createPassThrough(3, "Abandoned Mine", 3, 60, 0.35f);
 
-    // Early BossFight dungeons
     createBossFight(4, "Skeleton Lord's Lair", 4);
     createBossFight(5, "Spider Queen's Den", 5);
   }
 
   private void createMidTierDungeons() {
-    // Mid-tier PassThrough dungeons
     createPassThrough(6, "Haunted Catacombs", 8, 100, 0.5f);
     createPassThrough(7, "Crystal Caverns", 10, 80, 0.45f);
 
-    // Mid-tier BossFight dungeons
     createBossFight(8, "Dragon's Chamber", 12);
     createBossFight(9, "Lich King's Throne", 15);
   }
 
   private void createHighTierDungeons() {
-    // High-tier PassThrough dungeons
     createPassThrough(10, "Void Passages", 20, 150, 0.6f);
 
-    // High-tier BossFight dungeons
     createBossFight(11, "Demon Lord's Domain", 25);
     createBossFight(12, "The Final Abyss", 30);
   }
