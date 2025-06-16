@@ -1,7 +1,10 @@
 package com.s27691.dungenrous.entity;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Embedded;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.s27691.dungenrous.enums.Category;
+import com.s27691.dungenrous.enums.RequiredClass;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -9,7 +12,6 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -22,6 +24,7 @@ import lombok.Setter;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Getter
 @Setter
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public abstract class Character {
 
   @Id
@@ -39,6 +42,9 @@ public abstract class Character {
 
   private int numberOfDungeonsPassed;
   private int potionQuantity;
+
+  private int temporaryDefense = 0;
+
   @ManyToOne
   private Player player;
 
@@ -51,7 +57,25 @@ public abstract class Character {
   @ManyToOne
   Fraction fraction;
 
-  //items
+  @JsonProperty("characterType")
+  public String getCharacterType() {
+    return this.getClass().getSimpleName();
+  }
+
+  @JsonProperty("totalStrength")
+  public int getTotalStrengthForJson() {
+    return getTotalStrength();
+  }
+
+  @JsonProperty("totalIntellect")
+  public int getTotalIntellectForJson() {
+    return getTotalIntellect();
+  }
+
+  @JsonProperty("totalDefense")
+  public int getTotalDefenseForJson() {
+    return getTotalDefense();
+  }
 
   public boolean collectItem(Item item){
     if(itemsOwned.size()<30){
@@ -80,9 +104,6 @@ public abstract class Character {
     currentEquipment.remove(item);
   }
 
-
-  //level up / attributes
-
   public void initializeStartingStats() {
     this.level = 1;
     this.experience = 0;
@@ -95,21 +116,6 @@ public abstract class Character {
     this.numberOfDungeonsPassed = 0;
     this.potionQuantity = 3;
   }
-
-//  private boolean assignDevelopmentPoint(){
-//
-//  }
-
-//  private boolean evolveToArcaneCrusader(){
-//
-//  }
-
-  //functionality
-
-//  public int getPower(){
-//
-//  }
-
 
   public boolean takeDamage(int damage){
     currentHealthPoints = Math.max(0, currentHealthPoints-damage);
@@ -126,20 +132,55 @@ public abstract class Character {
     return false;
   }
 
+  public void addTemporaryDefense(int amount) {
+    this.temporaryDefense += amount;
+  }
+
+  public void resetTemporaryDefense() {
+    this.temporaryDefense = 0;
+  }
+
+  public int getTotalStrength() {
+    int equipmentBonus = currentEquipment.stream()
+        .filter(item -> item.getCategory() == Category.WEAPON)
+        .mapToInt(Item::getPower)
+        .sum();
+    return strength + equipmentBonus;
+  }
+
+  public int getTotalIntellect() {
+    int equipmentBonus = currentEquipment.stream()
+        .filter(item -> item.getCategory() == Category.WEAPON &&
+            (item.getRequiredClass() == RequiredClass.MAGE ||
+                item.getRequiredClass() == RequiredClass.ARCANE_CRUSADER))
+        .mapToInt(Item::getPower)
+        .sum();
+    return intellect + equipmentBonus;
+  }
+
+  public int getTotalDefense() {
+    int equipmentBonus = currentEquipment.stream()
+        .filter(item -> item.getCategory() == Category.HEAD ||
+            item.getCategory() == Category.BODY ||
+            item.getCategory() == Category.LEGS ||
+            item.getCategory() == Category.HANDS ||
+            item.getCategory() == Category.FEET ||
+            item.getCategory() == Category.SHIELD)
+        .mapToInt(Item::getPower)
+        .sum();
+    return defense + temporaryDefense + equipmentBonus;
+  }
+
   public void enterDungeon(int dungeonId) {
     if (dungeonId > numberOfDungeonsPassed + 1) {
       throw new IllegalArgumentException("Must complete dungeons in order");
     }
   }
+
   public void completeDungeon(int dungeonId) {
     if (dungeonId == numberOfDungeonsPassed + 1) {
       numberOfDungeonsPassed = dungeonId;
       potionQuantity += 3;
     }
   }
-
-//  public static Character createCharacter(Character character){
-//    return character;
-//  }
-
 }

@@ -1,5 +1,7 @@
 package com.s27691.dungenrous.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,6 +16,7 @@ import lombok.NoArgsConstructor;
 @DiscriminatorColumn(name = "fraction_dtype")
 @Getter
 @NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public abstract class Fraction {
   @Id
   @GeneratedValue
@@ -21,5 +24,10 @@ public abstract class Fraction {
 
   public boolean sustainFatalDamage(){
     return false;
+  }
+
+  @JsonProperty("fractionType")
+  public String getFractionType() {
+    return this.getClass().getSimpleName();
   }
 }

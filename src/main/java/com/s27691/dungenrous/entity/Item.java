@@ -1,5 +1,6 @@
 package com.s27691.dungenrous.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.s27691.dungenrous.enums.Category;
 import com.s27691.dungenrous.enums.RequiredClass;
 import jakarta.persistence.Entity;
@@ -15,12 +16,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Item {
 
   @Id
   @GeneratedValue
   private long id;
   private String name;
+
   @Enumerated(EnumType.STRING)
   private Category category;
 

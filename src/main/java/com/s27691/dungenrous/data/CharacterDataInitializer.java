@@ -85,7 +85,7 @@ public class CharacterDataInitializer {
 
     Paladin paladin1 = new Paladin();
     setupCharacter(paladin1, 15, 850, humanFraction, player1);
-    paladin1.setStamina(120);
+    paladin1.setCurrentStamina(100);
     characterRepository.save(paladin1);
   }
 
@@ -94,12 +94,12 @@ public class CharacterDataInitializer {
 
     Mage mage1 = new Mage();
     setupCharacter(mage1, 12, 600, humanFraction, player2);
-    mage1.setMana(150);
+    mage1.setCurrentMana(100);
     characterRepository.save(mage1);
 
     Mage mage2 = new Mage();
     setupCharacter(mage2, 3, 85, elfFraction, player2);
-    mage2.setMana(60);
+    mage2.setCurrentMana(100);
     characterRepository.save(mage2);
   }
 
@@ -108,8 +108,8 @@ public class CharacterDataInitializer {
 
     ArcaneCrusader crusader = new ArcaneCrusader();
     setupCharacter(crusader, 20, 1500, humanFraction, player3);
-    crusader.setStamina(100);
-    crusader.setMana(120);
+    crusader.setCurrentStamina(100);
+    crusader.setCurrentMana(100);
     characterRepository.save(crusader);
   }
 

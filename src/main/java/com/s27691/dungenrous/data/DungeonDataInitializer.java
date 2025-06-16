@@ -48,7 +48,7 @@ public class DungeonDataInitializer {
     createBossFight(12, "The Final Abyss", 30);
   }
 
-  private PassThrough createPassThrough(long id, String name, int requiredLevel,
+  private PassThrough createPassThrough(int id, String name, int requiredLevel,
       int length, float probabilityOfMonster) {
     PassThrough dungeon = new PassThrough();
     dungeon.setId(id);
@@ -60,7 +60,7 @@ public class DungeonDataInitializer {
     return dungeonRepository.save(dungeon);
   }
 
-  private BossFight createBossFight(long id, String name, int requiredLevel) {
+  private BossFight createBossFight(int id, String name, int requiredLevel) {
     BossFight dungeon = new BossFight();
     dungeon.setId(id);
     dungeon.setName(name);

@@ -13,5 +13,4 @@ public class Elf extends Fraction{
   public boolean intimidateOpponent(){
     return Math.random() <= PROBABILITY_OF_INTIMIDATING_OPPONENT;
   }
-
 }

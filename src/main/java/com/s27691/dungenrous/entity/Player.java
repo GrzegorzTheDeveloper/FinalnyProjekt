@@ -1,5 +1,7 @@
 package com.s27691.dungenrous.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,6 +17,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Setter
 @Getter
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Player {
 
   @Id
@@ -22,7 +25,9 @@ public class Player {
   private long id;
 
   private String nickname;
+
   @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
+  @JsonIgnore
   private List<Character> characters = new ArrayList<>();
 
   private long currentCharacterId;
@@ -37,26 +42,7 @@ public class Player {
     return false;
   }
 
-//  public void createCharacter(Character character){
-//    Character tmp = Character.createCharacter(character);
-//  }
-
-//  public List<Dungeons> exploreDungeons(int storeyId){
-//
-//  }
-
-//  public boolean enterDungeon(long dungeonId, long characterId){
-//
-//  }
-
   public void modifyCharacter(long characterId){
 
   }
-
-//  public boolean removeCharacter(){
-//
-//  }
-
-
-
 }

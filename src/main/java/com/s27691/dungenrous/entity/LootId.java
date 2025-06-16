@@ -15,7 +15,7 @@ import lombok.Setter;
 @EqualsAndHashCode
 public class LootId {
 
-  private long dungeonId;
+  private int dungeonId;
   private long mobId;
   private int instance;
 }

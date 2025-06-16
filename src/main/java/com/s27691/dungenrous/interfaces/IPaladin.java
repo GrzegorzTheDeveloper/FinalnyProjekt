@@ -1,6 +1,9 @@
 package com.s27691.dungenrous.interfaces;
 
+import com.s27691.dungenrous.entity.Mob;
+
 public interface IPaladin {
-//  void powerStrike(Mob mob);
-  void shieldStance();
+
+  Mob powerStrike(Mob mob);
+  boolean shieldStance();
 }

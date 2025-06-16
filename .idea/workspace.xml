@@ -5,29 +5,59 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d61a57d-7d84-47c3-b23a-7056594547b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/service/CharacterService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/service/FractionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/service/PlayerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/controller/CharacterController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/controller/CombatController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/controller/DungeonController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/controller/LootController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/dto/CombatResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/dto/DungeonCompletionResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/service/CombatService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/service/MobService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/5/050ab2417f44c44e8b603d37f2fa0baae25b0df6" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/5/050ab2417f44c44e8b603d37f2fa0baae25b0df6" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/6/06b94cd9e7a9ca20b6b9283bc70e35777ac53ea3" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/6/06b94cd9e7a9ca20b6b9283bc70e35777ac53ea3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/8/18255fd0926d5e63a56960c569191ef1ae59a367" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/6/5655550b6fa4e02c9ebf1ea2e6f2f7247cc30f36" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/6/5655550b6fa4e02c9ebf1ea2e6f2f7247cc30f36" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/c/6cf89f26594c8e483084fd4ae710b8027e48e7a4" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/c/6cf89f26594c8e483084fd4ae710b8027e48e7a4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/f/7f52d3906ecd2ea23db87ed6da5a0a39546b21ce" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/f/7f52d3906ecd2ea23db87ed6da5a0a39546b21ce" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/0/a08627a599a8bed3f83c8211964c485e0b6a560e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/0/a08627a599a8bed3f83c8211964c485e0b6a560e" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/f/8f97d4dec03c7e8a0be3e6468ea16511b56a9943" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/f/8f97d4dec03c7e8a0be3e6468ea16511b56a9943" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/0/a0d0bee9838fb0db226a4e9d6e55605c36ca1da6" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/0/a0d0bee9838fb0db226a4e9d6e55605c36ca1da6" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/3/a31122275155107205ae1cd23403c778c5a49d06" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/3/a31122275155107205ae1cd23403c778c5a49d06" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/3/d3d81175c28ec4dbd6bb558845fc6410e402f327" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/3/d3d81175c28ec4dbd6bb558845fc6410e402f327" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/a/babc58879af5c80237c4662ee40f583ac6ca566e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/a/babc58879af5c80237c4662ee40f583ac6ca566e" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/9/d94434a9afc2186965f3412914c89a562a39ce7b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/9/d94434a9afc2186965f3412914c89a562a39ce7b" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/9/d9d7ce053f7dee39094b3b5ac4a115d5b425aca1" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/9/d9d7ce053f7dee39094b3b5ac4a115d5b425aca1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/3/e314083b6600d8b10ec94e292bc07deb906b0c62" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/3/e314083b6600d8b10ec94e292bc07deb906b0c62" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/4/e446a2c633d2de98f0d668cb746cc94b6b0b43a3" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/4/e446a2c633d2de98f0d668cb746cc94b6b0b43a3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/6/e6db3e08edd3c06e34792c02fe6c01d74771853f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/6/e6db3e08edd3c06e34792c02fe6c01d74771853f" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/e/fef5c11b01c6428ad0facfaca68f611cd4241da8" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/e/fef5c11b01c6428ad0facfaca68f611cd4241da8" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/8/18255fd0926d5e63a56960c569191ef1ae59a367" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/DungenrousApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/DungenrousApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/data/CharacterDataInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/data/CharacterDataInitializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/data/DungeonDataInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/data/DungeonDataInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/data/ItemDataInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/data/ItemDataInitializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/data/LootDataInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/data/LootDataInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/data/MobDataInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/data/MobDataInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/ArcaneCrusader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/ArcaneCrusader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Character.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Dungeon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Dungeon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Elf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Elf.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Fraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Fraction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Human.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Loot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Loot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/LootId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/LootId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Mage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Mage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Mob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Mob.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Paladin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Paladin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/entity/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/interfaces/IMage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/interfaces/IMage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/interfaces/IPaladin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/interfaces/IPaladin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/repository/CharacterRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/repository/CharacterRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/repository/DungeonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/repository/DungeonRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/repository/ItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/repository/ItemRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/repository/LootRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/repository/LootRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/service/CharacterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/s27691/dungenrous/service/CharacterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

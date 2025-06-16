@@ -1,14 +1,23 @@
 
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8’ÄÕô2J$8227b562-6542-420d-81db-aebfc9a8e5b1
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8­¥¬Í÷2J$829bb22b-a4f3-4f9d-8c54-4d054cb76e19
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8Ÿ’ÄÕô2J$a7c70e1a-7fc7-4269-bf45-b1fa74c9f106
+java:S6813!"BRemove this field injection and use constructor injection instead.(êæÄŞ8­¥¬Í÷2J$f248c81c-eae0-4bd8-bdfd-d4f3b6b55a83
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8Ÿ’ÄÕô2J$3d084e71-ccf0-4f48-9f5c-3325d681899c
+java:S6813$"BRemove this field injection and use constructor injection instead.(êæÄŞ8®¥¬Í÷2J$445d1bb1-aca8-424d-91c7-11d6b65a5014
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8Ÿ’ÄÕô2J$d4ed694c-9221-4c95-a102-b34c2cccf4e6
-z
-java:S1172M"7Remove this unused method parameter "experienceGained".(©²™8­’ÄÕô2J$b65ffb89-e0a1-4eb2-8ddc-e6ed63f12b36
-ƒ	java:S125W"<This block of commented-out lines of code should be removed.(È ıèûÿÿÿÿ8¯’ÄÕô2J$1f5aeb9c-e40b-429a-9240-1a9d85bfc27e
-~
-java:S1144n";Remove this unused private "evolveToArcaneCrusader" method.(–å‹8¾’ÄÕô2J$b087e113-dc00-4f9d-89fc-d4a1e461aa5f
+java:S6813'"BRemove this field injection and use constructor injection instead.(êæÄŞ8®¥¬Í÷2J$68041d3d-13c8-4c2d-b89d-6dd452048ff8
+…
+java:S6813*"BRemove this field injection and use constructor injection instead.(êæÄŞ8®¥¬Í÷2J$e122ef70-8aa2-4a52-b8d1-dcb00c3a6aad
+…
+java:S6813-"BRemove this field injection and use constructor injection instead.(êæÄŞ8®¥¬Í÷2J$cf9fc3d8-5add-456f-bda5-5cf36c44df8d
+v
+java:S1172œ"-Remove this unused method parameter "itemId".(¬¢ĞÁûÿÿÿÿ8Á¥¬Í÷2J$9b52681f-6ae0-40b0-9158-150e2a256e2e
+‰
+java:S1128"ARemove this unused import 'com.s27691.dungenrous.entity.Dungeon'.(ÃÆ©ûÿÿÿÿ8¦æ¶Í÷2J$d54d6439-a403-43da-90c9-18c762eca8dc
+‡
+java:S1128"?Remove this unused import 'com.s27691.dungenrous.entity.Human'.(…¢éıÿÿÿÿ8¦æ¶Í÷2J$abb96c95-d176-4c3c-ab96-ac0ad508e692
+…
+java:S1128"=Remove this unused import 'com.s27691.dungenrous.entity.Mob'.(ïƒù¤ÿÿÿÿÿ8¦æ¶Í÷2J$a90c8370-ff35-4b1b-9a4f-5aad7c6a934a
+n
+java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü8¦æ¶Í÷2J$0c6879e4-1227-4369-8cb6-1f82931ae14a

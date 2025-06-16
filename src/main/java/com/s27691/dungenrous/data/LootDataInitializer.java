@@ -110,7 +110,7 @@ public class LootDataInitializer {
       if (mobs.isEmpty()) {
         throw new IllegalStateException("No mobs available for loot generation");
       }
-      return mobs.get(0); // Fallback to first available mob
+      return mobs.get(0);
     }
 
     return bossMobs.get(random.nextInt(bossMobs.size()));

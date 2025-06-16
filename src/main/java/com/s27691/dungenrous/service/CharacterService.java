@@ -1,18 +1,26 @@
 package com.s27691.dungenrous.service;
 
+import com.s27691.dungenrous.dto.DungeonCompletionResult;
 import com.s27691.dungenrous.entity.ArcaneCrusader;
 import com.s27691.dungenrous.entity.Character;
+import com.s27691.dungenrous.entity.Dungeon;
 import com.s27691.dungenrous.entity.Fraction;
 import com.s27691.dungenrous.entity.Human;
 import com.s27691.dungenrous.entity.Item;
+import com.s27691.dungenrous.entity.Loot;
 import com.s27691.dungenrous.entity.Mage;
+import com.s27691.dungenrous.entity.Mob;
 import com.s27691.dungenrous.entity.Paladin;
 import com.s27691.dungenrous.entity.Player;
 import com.s27691.dungenrous.repository.CharacterRepository;
+import com.s27691.dungenrous.repository.DungeonRepository;
 import com.s27691.dungenrous.repository.FractionRepository;
 import com.s27691.dungenrous.repository.ItemRepository;
+import com.s27691.dungenrous.repository.LootRepository;
 import com.s27691.dungenrous.repository.PlayerRepository;
+import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +38,12 @@ public class CharacterService {
 
   @Autowired
   private ItemRepository itemRepository;
+
+  @Autowired
+  private LootRepository lootRepository;
+
+  @Autowired
+  private DungeonRepository dungeonRepository;
 
   public Character createCharacter(String playerNickname, String fractionType, String characterClass) {
     Player player = new Player();
@@ -58,36 +72,38 @@ public class CharacterService {
     return characterRepository.save(character);
   }
 
-  private Character giveStartingEquipment(Character character){
-
+  private Character giveStartingEquipment(Character character) {
     List<Item> startingItems = itemRepository.findAll().stream()
         .filter(item -> item.getRequiredLevel() == 1)
         .filter(item -> item.getRequiredClass().toString().equals("ANY") ||
-            item.getRequiredClass().toString().equals(character.getClass().getSimpleName().toUpperCase())).toList();
-    for(Item item : startingItems){
+            item.getRequiredClass().toString().equals(character.getClass().getSimpleName().toUpperCase()))
+        .toList();
+
+    for (Item item : startingItems) {
       character.collectItem(item);
       character.equipItem(item);
     }
 
     return characterRepository.save(character);
-
-
   }
 
-  public Character gainExperience(Long playerId, int experienceGained){
-    Character character = getCharacterByPlayerId(playerId);
-    if(character==null) return null;
+  public Character gainExperience(Character character, int experienceGained){
 
+    character.setExperience(experienceGained + character.getExperience());
     while(character.getExperience() >= getExperienceToNextLevel(character.getLevel())){
       character.setExperience(character.getExperience() - getExperienceToNextLevel(character.getLevel()));
       character.setLevel(character.getLevel()+1);
       character.setFreeDevelopmentPoints(character.getFreeDevelopmentPoints()+3);
     }
 
-//    if(character.getLevel() >= 10 && !(character instanceof ArcaneCrusader))
-//      to be implemented
     return characterRepository.save(character);
   }
+
+  public Character gainExperience(Long playerId, int experienceGained){
+    Character character = getCharacterByPlayerId(playerId);
+    return gainExperience(character, experienceGained);
+  }
+
 
   public Character increaseAttribute(Long playerId, String attribute) {
     Character character = getCharacterByPlayerId(playerId);
@@ -107,7 +123,7 @@ public class CharacterService {
     return characterRepository.save(character);
   }
 
-  private Character evolveToArcaneCrusader(Long playerId){
+  public Character evolveToArcaneCrusader(Long playerId){
     Character character = getCharacterByPlayerId(playerId);
     if(character == null || character.getLevel() < 10 || character instanceof ArcaneCrusader || character.getFreeDevelopmentPoints()< 10)
       return null;
@@ -139,9 +155,10 @@ public class CharacterService {
 
   public Character equipItem(Long playerId, long itemId){
     Character character = getCharacterByPlayerId(playerId);
-    Item item = itemRepository.findById(itemId).orElse(null);
 
-    if(character == null || item == null) return null;
+    if(character == null) return null;
+    Item item = character.getItemsOwned().stream()
+        .filter(i -> i.getId() == itemId).findFirst().orElse(null);
 
     boolean equipped = character.equipItem(item);
 
@@ -153,9 +170,10 @@ public class CharacterService {
 
   public Character unequipItem(Long playerId, Long itemId){
     Character character = getCharacterByPlayerId(playerId);
-    Item item = itemRepository.findById(itemId).orElse(null);
 
-    if(character == null || item == null) return null;
+    if(character == null) return null;
+    Item item = character.getCurrentEquipment().stream()
+        .filter(i -> i.getId() == itemId).findFirst().orElse(null);
 
     character.removeItemFromEquipment(item);
     return characterRepository.save(character);
@@ -163,9 +181,9 @@ public class CharacterService {
 
   public Character addItemToInventory(Long playerId, Long itemId){
     Character character = getCharacterByPlayerId(playerId);
-    Item item = itemRepository.findById(itemId).orElse(null);
-    if (character == null || item == null) return null;
-
+    if (character == null) return null;
+    Item item = character.getCurrentEquipment().stream()
+        .filter(i -> i.getId() == itemId).findFirst().orElse(null);
     boolean collected = character.collectItem(item);
 
     if(collected){
@@ -176,27 +194,12 @@ public class CharacterService {
 
   public Character removeItemFromInventory(Long playerId, Long itemId){
     Character character = getCharacterByPlayerId(playerId);
-    Item item = itemRepository.findById(itemId).orElse(null);
-    if (character == null || item == null) return null;
 
+    if (character == null) return null;
+    Item item = character.getCurrentEquipment().stream()
+        .filter(i -> i.getId() == itemId).findFirst().orElse(null);
     character.removeItem(item);
     return characterRepository.save(character);
-  }
-
-
-
-  public Character takeDamage(Long playerId, int damage){
-    Character character = getCharacterByPlayerId(playerId);
-    if(character == null) return null;
-
-    boolean isAlive = character.takeDamage(damage);
-
-    if( !isAlive && character.getFraction().sustainFatalDamage()) {
-      character.setCurrentHealthPoints(1);
-    }
-
-    return characterRepository.save(character);
-
   }
 
   public Character usePotion(Long playerId){
@@ -210,21 +213,38 @@ public class CharacterService {
     return character;
   }
 
-  public Character restoreStaminaAndMana(Long playerId, int stamina, int mana) {
+  public Character restoreCharacterToFullStrength(Long playerId) {
     Character character = getCharacterByPlayerId(playerId);
-    if (character == null)
-      return null;
+    if (character == null) return null;
+
+    character.setCurrentHealthPoints(character.getMaxHealthPoints());
 
     if (character instanceof Paladin paladin) {
-      paladin.setStamina(Math.min(paladin.getStamina() + stamina, 100));
+      paladin.setCurrentStamina(paladin.getMaxStamina());
+    } else if (character instanceof Mage mage) {
+      mage.setCurrentMana(mage.getMaxMana());
     } else if (character instanceof ArcaneCrusader crusader) {
-      crusader.setStamina(Math.min(crusader.getStamina() + stamina, 100));
+      crusader.setCurrentStamina(crusader.getMaxStamina());
+      crusader.setCurrentMana(crusader.getMaxMana());
     }
 
-    if (character instanceof Mage mage) {
-      mage.setMana(Math.min(mage.getMana() + mana, 100));
-    } else if (character instanceof ArcaneCrusader crusader) {
-      crusader.setMana(Math.min(crusader.getMana() + mana, 100));
+    character.resetTemporaryDefense();
+
+    return saveCharacter(character);
+  }
+
+  public Character enterDungeon(Long playerId) {
+    return restoreCharacterToFullStrength(playerId);
+  }
+
+  public Character takeDamage(Long playerId, int damage){
+    Character character = getCharacterByPlayerId(playerId);
+    if(character == null) return null;
+
+    boolean isAlive = character.takeDamage(damage);
+
+    if( !isAlive && character.getFraction().sustainFatalDamage()) {
+      character.setCurrentHealthPoints(1);
     }
 
     return characterRepository.save(character);
@@ -234,12 +254,43 @@ public class CharacterService {
     return 100 + (level * 50);
   }
 
-  private Character getCharacterByPlayerId(Long playerId){
-    Player player = playerRepository.findById(playerId).orElse(null);
-    if(player == null || player.getCharacters().isEmpty())
-      return null;
-    return player.getCharacters().get(0);
+  public Character getCharacterByPlayerId(Long playerId){
+   Character character =  characterRepository.findByPlayerIdWithDetails(playerId).orElse(null);
+    if (character == null) return null;
+    return characterRepository.findByIdWithEquipment(character.getId()).orElse(character);
+  }
+
+  public DungeonCompletionResult completeDungeon(Long playerId, int dungeonId) {
+    Character character = getCharacterByPlayerId(playerId);
+    if (character == null) return null;
+
+    character.completeDungeon(dungeonId);
+
+    List<Loot> dungeonLoot = lootRepository.findByLootId_DungeonId(dungeonId);
+
+    int totalExperience = dungeonLoot.stream().mapToInt(Loot::getExperience).sum();
+    List<Item> lootItems = dungeonLoot.stream().map(Loot::getItem).filter(Objects::nonNull)
+        .toList();
+
+    character = gainExperience(character, totalExperience);
+
+    return new DungeonCompletionResult(character, lootItems);
+  }
+
+  public Character collectLootItem(Long playerId, Long itemId) {
+    return addItemToInventory(playerId, itemId);
+  }
+
+  public Character rejectLootItem(Long playerId, Long itemId) {
+    return getCharacterByPlayerId(playerId);
+  }
+
+  public Character saveCharacter(Character character){
+    return characterRepository.save(character);
   }
 
 
+  public Character getCharacter(long id){
+    return characterRepository.findById(id).orElse(null);
+  }
 }

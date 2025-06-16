@@ -1,6 +1,6 @@
 package com.s27691.dungenrous.entity;
 
-import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
@@ -13,6 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Loot {
 
   @EmbeddedId
@@ -20,14 +21,17 @@ public class Loot {
 
   @ManyToOne
   @MapsId("dungeonId")
+  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "opponents", "visitor"})
   private Dungeon dungeon;
 
   @ManyToOne
   @MapsId("mobId")
+  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
   private Mob mob;
 
   private int experience;
 
   @ManyToOne
+  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
   private Item item;
 }
